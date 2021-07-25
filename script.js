@@ -16,7 +16,7 @@ function WubiInput() {
 
 	return {
 		target: "冰灯是流行于中国北方的一种古老的民间艺术形式。",
-		progress: 0,
+		progress: Number(localStorage.getItem("progress")) || 0,
 		inputtext: '',
 
 		getText() {
@@ -75,6 +75,8 @@ function WubiInput() {
 			}
 			this.progress = progress;
 			this.inputtext = newInputtext;
+
+			localStorage.setItem("progress", progress);
 		},
 	};
 }
