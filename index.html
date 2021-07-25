@@ -7,7 +7,7 @@
 <body>
 	<div x-data="WubiInput()">
 		<p x-init="getText()">
-			<span x-text="getTargetDone()" class="text-done"></span><span x-text="getTargetTodo()" class="text-todo"></span>
+			<span x-text="getTargetDone()" class="text-done"></span><span id="cursor"></span><span x-text="getTargetTodo()" class="text-todo"></span>
 		</p>
 
 		<input x-model.number="progress" type="number"></input><br />

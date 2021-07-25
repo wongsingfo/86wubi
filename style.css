@@ -22,3 +22,14 @@ p {
 img {
 	height: 52px;
 }
+
+#cursor {
+	outline: solid 1px black;
+	animation: blinker 1s ease-in-out infinite;
+}
+
+@keyframes blinker {
+	50% {
+		opacity: 0;
+	}
+}
