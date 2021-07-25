@@ -20,7 +20,7 @@ function WubiInput() {
 		inputtext: '',
 
 		getText() {
-			fetch('/text.txt')
+			fetch('text.txt')
 				.then(response => response.text())
 				.then(text => {
 					this.target = text;
@@ -69,7 +69,7 @@ function WubiInput() {
 			while (progress < target.length && isSpace(target[progress])) {
 				progress += 1;
 			}
-			
+
 			if (hasEnter) {
 				newInputtext = '';
 			}
