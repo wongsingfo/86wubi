@@ -18,3 +18,7 @@ body {
 p {
 	max-width: 600px;
 }
+
+img {
+	height: 52px;
+}
