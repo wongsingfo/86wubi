@@ -3,10 +3,18 @@
 }
 
 .text-todo {
-	substrings: replace(" " "\t", "␣" "→→→→") prepend("\n", "↵");
 }
 
 span {
 	/* https://devdocs.io/css/white-space */
 	white-space: pre-wrap;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+}
+
+p {
+	max-width: 600px;
 }
