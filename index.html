@@ -10,8 +10,9 @@
 			<span x-text="getTargetDone()" class="text-done"></span><span x-text="getTargetTodo()" class="text-todo"></span>
 		</p>
 
-		<textarea x-model="inputtext" @keyup="onTextChanged()"></textarea>
-		<img :src="`cache/${getCharacter()}.gif`" />
+		<input x-model.number="progress" type="number"></input><br />
+		<img :src="`cache/${getCharacter()}.gif`" /><br />
+		<textarea x-model="inputtext" @keyup="onTextChanged()"></textarea><br />
 	</div>
 
 	<script src="/script.js" defer></script>
