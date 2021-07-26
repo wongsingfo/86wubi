@@ -6,13 +6,15 @@
 
 <body>
 	<div x-data="WubiInput()">
+		<div id="inputbox">
+			<input x-model="inputtext" @keyup="onTextChanged()" placeholder="在此开始输入" class="caret-hidden" id="inputtext"></input><br />
+			<input x-model.number="progress" type="number"></input><br />
+			<img :src="`cache/${getCharacter()}.gif`" /><br />
+		</div>
+
 		<p x-init="getText()">
 			<span x-text="getTargetDone()" class="text-done"></span><span id="cursor"></span><span x-text="getTargetTodo()" class="text-todo"></span>
 		</p>
-
-		<input x-model.number="progress" type="number"></input><br />
-		<img :src="`cache/${getCharacter()}.gif`" /><br />
-		<textarea x-model="inputtext" @keyup="onTextChanged()"></textarea><br />
 	</div>
 
 	<script src="script.js" defer></script>

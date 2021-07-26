@@ -33,3 +33,13 @@ img {
 		opacity: 0;
 	}
 }
+
+#inputbox {
+	background-color: white;
+	position: absolute;
+	border: 1px solid black;
+}
+
+.caret-hidden {
+  caret-color: transparent;
+}

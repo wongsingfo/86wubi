@@ -14,16 +14,28 @@ function WubiInput() {
 		return false;
 	}
 
+	function moveInputBox() {
+		const cursor = document.getElementById('cursor');
+		const { left, top } = cursor.getBoundingClientRect();
+		const { offsetLeft, offsetTop, offsetHeight } = cursor;
+		const inputbox = document.getElementById('inputbox');
+		inputbox.style.top = offsetTop + offsetHeight;
+		inputbox.style.left = offsetLeft;
+		const inputtext = document.getElementById('inputtext');
+		inputtext.focus();
+	}
+
 	return {
 		target: "冰灯是流行于中国北方的一种古老的民间艺术形式。",
 		progress: Number(localStorage.getItem("progress")) || 0,
 		inputtext: '',
 
 		getText() {
-			fetch('text.txt')
+			fetch('text02.txt')
 				.then(response => response.text())
 				.then(text => {
 					this.target = text;
+					setTimeout(() => moveInputBox(), 0);
 				});
 		},
 
@@ -75,6 +87,7 @@ function WubiInput() {
 			}
 			this.progress = progress;
 			this.inputtext = newInputtext;
+			moveInputBox();
 
 			localStorage.setItem("progress", progress);
 		},
