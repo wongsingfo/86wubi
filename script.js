@@ -31,7 +31,7 @@ function WubiInput() {
 		inputtext: '',
 
 		getText() {
-			fetch('text02.txt')
+			fetch('text.txt')
 				.then(response => response.text())
 				.then(text => {
 					this.target = text;
