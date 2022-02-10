@@ -43,12 +43,19 @@ function WubiInput() {
 		isStopWord,
 
 		getText() {
-			fetch('text.txt')
-				.then(response => response.text())
-				.then(text => {
-					this.target = text;
-					setTimeout(() => moveInputBox(), 0);
-				});
+			let target = localStorage.getItem("target");
+			if (target) {
+				this.target = target;
+				setTimeout(() => moveInputBox(), 0);
+				return;
+			} else {
+				fetch('text.txt')
+					.then(response => response.text())
+					.then(text => {
+						this.target = text;
+						setTimeout(() => moveInputBox(), 0);
+					});
+			}
 		},
 
 		getTargetDone() {
@@ -102,6 +109,7 @@ function WubiInput() {
 			moveInputBox();
 
 			localStorage.setItem("progress", progress);
+			localStorage.setItem("target", target);
 		},
 
 		resetProgress() {
