@@ -9,7 +9,9 @@
 		<div id="inputbox">
 			<input x-model="inputtext" @keyup="onTextChanged()" placeholder="在此开始输入" class="caret-hidden" id="inputtext"></input><br />
 			<input x-model.number="progress" type="number"></input><br />
-			<img :src="`cache/${getCharacter()}.gif`" /><br />
+			<template x-if="!isStopWord(getCharacter())">
+				<img :src="`cache/${getCharacter()}.gif`" /><br />
+			</template>
 		</div>
 
 		<p x-init="getText()">

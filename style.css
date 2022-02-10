@@ -3,6 +3,7 @@
 }
 
 .text-todo {
+	padding-bottom: 5rem;
 }
 
 span {
@@ -41,5 +42,5 @@ img {
 }
 
 .caret-hidden {
-  caret-color: transparent;
+	caret-color: transparent;
 }
