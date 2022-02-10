@@ -6,6 +6,14 @@
 
 <body>
 	<div x-data="WubiInput()">
+		<div>
+			<input type="button" @click="showTextarea = !showTextarea" value="编辑输入文本" />
+			<input type="button" @click="resetProgress" value="重置进度" />
+		</div>
+
+		<textarea x-show="showTextarea" x-model="target" x-ref="textarea">
+		</textarea>
+
 		<div id="inputbox">
 			<input x-model="inputtext" @keyup="onTextChanged()" placeholder="在此开始输入" class="caret-hidden" id="inputtext"></input><br />
 			<input x-model.number="progress" type="number"></input><br />

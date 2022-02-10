@@ -39,6 +39,7 @@ function WubiInput() {
 		progress: Number(localStorage.getItem("progress")) || 0,
 		inputtext: '',
 
+		showTextarea: false,
 		isStopWord,
 
 		getText() {
@@ -101,6 +102,11 @@ function WubiInput() {
 			moveInputBox();
 
 			localStorage.setItem("progress", progress);
+		},
+
+		resetProgress() {
+			this.progress = 0;
+			this.onTextChanged();
 		},
 	};
 }
