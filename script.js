@@ -5,7 +5,7 @@ function WubiInput() {
 		'\u000D', '\u0020', '\u0022', '\u0027', '\u005C',
 		'\u00A0', '\u2028', '\u2029', '\uFEFF'];
 
-	const stop_words = '\'"()[]{}<>.,:;!?*&^%$#@~`-_=+/\\|' +
+	const stopWords = '\'"()[]{}<>.,:;!?*&^%$#@~`-_=+/\\|' +
 		'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' +
 		'0123456789' +
 		'，。“”《》——！？：、‘’';
@@ -20,7 +20,7 @@ function WubiInput() {
 	}
 
 	function isStopWord(str) {
-		return stop_words.indexOf(str) > -1;
+		return stopWords.indexOf(str) > -1;
 	}
 
 	function moveInputBox() {
@@ -114,8 +114,19 @@ function WubiInput() {
 
 		resetProgress() {
 			this.progress = 0;
-			this.onTextChanged();
+			setTimeout(() => this.onTextChanged(), 10);
 		},
+
+		toggleTextarea() {
+			this.showTextarea = !this.showTextarea;
+			// We update the InputBox after the browser reflow. I
+			// set it to 10 ms instead of zero to make sure the
+			// browser reflow is completed and 10 ms is small
+			// enough that the user cannot perceive.
+			//
+			// Maybe there are better way to do this. Need help.
+			setTimeout(() => moveInputBox(), 10);
+		}
 	};
 }
 

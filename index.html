@@ -7,7 +7,7 @@
 <body>
 	<div x-data="WubiInput()">
 		<div>
-			<input type="button" @click="showTextarea = !showTextarea" value="编辑输入文本" />
+			<input type="button" @click="toggleTextarea" value="编辑输入文本" />
 			<input type="button" @click="resetProgress" value="重置进度" />
 		</div>
 
@@ -28,6 +28,7 @@
 	</div>
 
 	<script src="script.js" defer></script>
-	<script src="//unpkg.com/alpinejs" defer></script>
+	<script src="alpinejs-3.12.2.js" defer></script>
+	<!-- <script src="//unpkg.com/alpinejs" defer></script> -->
 
 </body>
