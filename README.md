@@ -32,3 +32,6 @@
 
 本项目收录了国务院 2013 公布的《通用规范汉字表》一级字表和二级字表中**部分**的拆字图片，一共 3355 个汉字。项目的拆字图片来自于 wb86.com 和 52wubi.com 站点。
 
+### Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=wongsingfo/86wubi&type=Date)](https://star-history.com/#wongsingfo/86wubi&Date)
