@@ -28,11 +28,50 @@ function WubiInput() {
 		const {left, top} = cursor.getBoundingClientRect();
 		const {offsetLeft, offsetTop, offsetHeight} = cursor;
 		const inputbox = document.getElementById('inputbox');
-		inputbox.style.top = offsetTop + offsetHeight;
-		inputbox.style.left = offsetLeft;
+		const styleTop = offsetTop + offsetHeight;
+		const styleLeft = offsetLeft;
+		const styleHash = styleLeft * 10007 + styleTop;
+		inputbox.style.top = styleTop;
+		inputbox.style.left = styleLeft;
 		const inputtext = document.getElementById('inputtext');
 		inputtext.focus();
+		return styleHash;
 	}
+
+	const waitRenderingResultMs = 50;
+	const cancelWaitAfterSameRenderingResult = 10;
+
+	const triggerMoveInputBox = (() => {
+		intervalId = undefined;
+		return () => {
+			if (intervalId) {
+				return;
+			}
+			let lastStyleHash = moveInputBox();
+			let sameCount = 0;
+			intervalId = setInterval(
+				() => {
+					currentStyleHash = moveInputBox();
+					if (lastStyleHash === currentStyleHash) {
+						sameCount += 1;
+					} else {
+						sameCount = 0;
+					}
+					lastStyleHash = currentStyleHash;
+					if (sameCount > cancelWaitAfterSameRenderingResult) {
+						clearInterval(intervalId);
+						intervalId = undefined;
+					}
+				},
+				waitRenderingResultMs
+			);
+		}
+	})();
+
+
+	addEventListener("resize", (event) => {
+		triggerMoveInputBox()
+	});
 
 	return {
 		target: "Loading...",
@@ -119,13 +158,7 @@ function WubiInput() {
 
 		toggleTextarea() {
 			this.showTextarea = !this.showTextarea;
-			// We update the InputBox after the browser reflow. I
-			// set it to 10 ms instead of zero to make sure the
-			// browser reflow is completed and 10 ms is small
-			// enough that the user cannot perceive.
-			//
-			// Maybe there are better way to do this. Need help.
-			setTimeout(() => moveInputBox(), 10);
+			triggerMoveInputBox();
 		}
 	};
 }
